@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e8e8e8;
+            font-family: Arial;
+        }
+
+        .calculator {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        }
+
+        #screen {
+            width: 100%;
+            height: 60px;
+            font-size: 28px;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: right;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 70px);
+            gap: 10px;
+        }
+
+        button {
+            height: 60px;
+            font-size: 22px;
+            border-radius: 10px;
+            border: none;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #dcdcdc;
+        }
+
+        button:active {
+            background: #c7c7c7;
+        }
+
+        /* AC đỏ nhẹ */
+        button:nth-child(14) {
+            background: #ffb0b0;
+        }
+
+
+        /* = xanh nhẹ */
+        button:nth-child(15) {
+            background: #b6e3b6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="screen" disabled>
+        <div class="buttons">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>/</button>
+
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>*</button>
+
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>-</button>
+
+            <button>0</button>
+            <button>AC</button>
+            <button>=</button>
+            <button>+</button>
+        </div>
+    </div>
+</body>
+<script>
+    const screen = document.getElementById('screen');
+    // hiển thị lên chỗ có id là screen
+    const buttons = document.querySelectorAll('button');
+    // lấy tất cả các nút button để hiển thị
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let value =  btn.textContent;
+
+            if(value == "AC"){ 
+                screen.value = "";
+            }
+            // nếu nhấn AC về rỗng
+            else if (value == "="){
+                screen.value = eval(screen.value);
+            // nhấn =  tự tính bằng hàm eval
+
+            }
+            else {
+                screen.value += value;
+            }
+
+        })
+    })
+
+</script>
+
+</html>
