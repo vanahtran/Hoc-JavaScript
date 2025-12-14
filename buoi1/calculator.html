@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="/buoi1/caculator.js">
     <style>
         body {
             margin: 0;
@@ -73,6 +74,7 @@
 </head>
 
 <body>
+    <h1>Máy Tính Bỏ Túi</h1>
     <div class="calculator">
         <input type="text" id="screen" disabled>
         <div class="buttons">
@@ -98,31 +100,6 @@
         </div>
     </div>
 </body>
-<script>
-    const screen = document.getElementById('screen');
-    // hiển thị lên chỗ có id là screen
-    const buttons = document.querySelectorAll('button');
-    // lấy tất cả các nút button để hiển thị
-    buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            let value =  btn.textContent;
 
-            if(value == "AC"){ 
-                screen.value = "";
-            }
-            // nếu nhấn AC về rỗng
-            else if (value == "="){
-                screen.value = eval(screen.value);
-            // nhấn =  tự tính bằng hàm eval
-
-            }
-            else {
-                screen.value += value;
-            }
-
-        })
-    })
-
-</script>
 
 </html>
